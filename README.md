@@ -11,9 +11,17 @@ Quickly open URLs related to your repos.
 
     $ pip install repo-links
 
+## Example usage
+
+Each command prints the URL to a relevant service. For that to actually be useful, you probably want to use it in another command. For example, on MacOS you can use the `open` command to open the URL in the default browser.
+
+The command below would open your repo's page on it's code management system.
+
+    $ open $(repo-links code)
+
 ## Open a repo in a code management system
 
-The `code` command opens a repo's code management system. The details are automatically pulled from your locally setup git remotes. Without any additional arguments, it'll open the repo's root page in your code management system.
+The `code` command prints a URL to the repo's code management system. The details are automatically pulled from your locally setup git remotes. Without any additional arguments, it'll open the repo's root page in your code management system.
 
     $ repo-links code
 
@@ -39,7 +47,6 @@ The `ci` command opens a repo's CI/CD platform page. The platform is determined 
 
 Currently supported CI/CD platforms:
 
-- GitHub Actions
 - CircleCI
 
 ## Building your own plugins

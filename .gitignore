@@ -10,3 +10,5 @@ venv
 *.egg-info
 .python-version
 tags
+build
+dist
