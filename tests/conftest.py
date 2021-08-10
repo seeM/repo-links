@@ -13,6 +13,7 @@ def mock_repo(tmp_path):
                 ["git", "remote", "add", "origin", f"git@{vcs}:seem/test-repo.git"],
                 check=True,
             )
+            subprocess.run(["git", "checkout", "-b", "main"], check=True)
         if ci:
             (tmp_path / ci).mkdir()
 
