@@ -57,7 +57,7 @@ _Under construction. `repo-links` is planning to support plugins._
 
 To contribute to this tool, first checkout the code. Then create a new virtual environment:
 
-    cd repo_links
+    cd repo-links
     python -mvenv venv
     source venv/bin/activate
 
