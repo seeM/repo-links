@@ -1,5 +1,5 @@
-from __future__ import annotations
 from pathlib import Path
+from typing import Union, Tuple
 from .git import Repo
 from .typing import PathLike
 
@@ -7,7 +7,7 @@ from .typing import PathLike
 def get_code_url(
     repo: Repo,
     path: PathLike,
-    lines: int | tuple[int, int] | None,
+    lines: Union[int, Tuple[int, int], None],
 ):
     if repo.remote.vcs == "bitbucket.org":
         return _get_bitbucket_url(repo, path, lines)
@@ -19,7 +19,7 @@ def get_code_url(
 def _get_bitbucket_url(
     repo: Repo,
     path: PathLike,
-    lines: int | tuple[int, int] | None,
+    lines: Union[int, Tuple[int, int], None],
 ):
     path = Path(path)
     rel_path = path.absolute().relative_to(repo.git_root)
@@ -38,7 +38,7 @@ def _get_bitbucket_url(
 def _get_github_url(
     repo: Repo,
     path: PathLike,
-    lines: int | tuple[int, int] | None,
+    lines: Union[int, Tuple[int, int], None],
 ):
     path = Path(path)
     rel_path = path.absolute().relative_to(repo.git_root)

@@ -1,5 +1,5 @@
-from __future__ import annotations
 from pathlib import Path
+from typing import Optional
 from .git import Repo
 from .typing import PathLike
 
@@ -13,7 +13,7 @@ def get_ci_url(repo: Repo) -> str:
     raise RuntimeError()
 
 
-def _get_ci(git_root: PathLike) -> str | None:
+def _get_ci(git_root: PathLike) -> Optional[str]:
     git_root = Path(git_root)
     for p in git_root.iterdir():
         if p.name == ".github":

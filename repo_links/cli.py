@@ -1,7 +1,7 @@
-from __future__ import annotations
 import click
 from click_default_group import DefaultGroup  # type: ignore
 import re
+from typing import Union, Tuple
 
 from . import git
 from .code import get_code_url
@@ -17,7 +17,9 @@ def cli():
     pass
 
 
-def validate_lines(ctx, param, value):
+def validate_lines(
+    ctx: click.core.Context, param: click.core.Option, value: Union[str, None]
+):
     if value is None:
         return
 
@@ -43,7 +45,7 @@ def validate_lines(ctx, param, value):
     required=False,
 )
 @click.option("--lines", type=click.UNPROCESSED, callback=validate_lines, default=None)
-def code(path: str, lines: int | tuple[int, int] | None) -> None:
+def code(path: str, lines: Union[int, Tuple[int, int], None]) -> None:
     repo = git.get_repo(path)
     url = get_code_url(repo, path, lines)
     click.echo(url)
